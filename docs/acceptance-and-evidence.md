@@ -17,7 +17,7 @@ Confirm data-sharing rules before private information goes to AI, and spending s
 | J01 | Complete both features with real sources, then reload. | Source coverage is accurate; exact approved criteria and useful cited guidance are restored. |
 | J02 | Choose Draft now early. | Editable criteria appear; unknowns stay separate; missing context is clear. Approval is still required. |
 | J03 | Provide conflicting code and team guidance. | Show the conflict and ask about desired behavior. Do not assume existing code is the requirement. |
-| J04 | Reach five questions, skip, repeat a request, and reload. | No sixth question or duplicate progress. Saved question and answer state returns. |
+| J04 | Reach five questions, use all three skips, try a fourth skip, repeat a request, and reload. | No sixth AI question and no fourth skip. Skips do not use up questions. Each skipped question appears as an open decision for the assignee. No duplicate progress; saved state returns. |
 | J05 | Save competing edits; repeat a successful submission later. | One save wins; the other gets a warning and keeps its edits. Retry returns the original result without another approval. |
 | J06 | Return broken AI output or an invented, irrelevant, or misleading citation. | Reject unsupported output and preserve good saved work. A real link alone does not prove a claim. |
 | J07 | Change criteria, a page, or the selected branch; fail a freshness check. | Mark guidance outdated or freshness unknown. Do not silently rewrite approved criteria. |
@@ -27,7 +27,7 @@ Confirm data-sharing rules before private information goes to AI, and spending s
 
 A negative test may pass because the app stops safely. That is different from completing a normal ticket.
 
-## Six extra checks
+## Seven extra checks
 
 | ID | Check |
 | --- | --- |
@@ -37,10 +37,11 @@ A negative test may pass because the app stops safely. That is different from co
 | C04 | Test missing/exhausted budgets, simultaneous calls, changed prices, late results, and repeated refunds. Keep costs tied to the original budget period. |
 | C05 | Open expired work before cleanup; delete during AI processing. Hide expired content, prevent late restoration, and preserve spending records. |
 | C06 | Try missing sources, no useful evidence, and unavailable AI. Show clear next actions and partial results without claiming full completion. |
+| C07 | Try approval as a ticket viewer and as a ticket editor. Only the editor can approve. Re-approving saves a new version with a comparison, retains older versions and open decisions, and marks guidance outdated until the user chooses to regenerate it. |
 
 ## Compare AI models
 
-Kandis owns the comparison. The suggested starting set is eighteen fixed examples: six for questions/criteria, six for code analysis, and six for guidance. Use the same source information for each candidate.
+Gabba owns the comparison. The suggested starting set is eighteen fixed examples: six for questions/criteria, six for code analysis, and six for guidance. Use the same source information for each candidate.
 
 Review accuracy, usefulness, supporting evidence, and handling of uncertainty. Count all attempts, including broken responses, refusals, retries, cost, and time. A safe refusal can be correct when information is missing; it is not a useful completion when the question was answerable. A high average cannot cancel a serious privacy or evidence failure.
 

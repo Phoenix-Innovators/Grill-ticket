@@ -10,26 +10,26 @@ The team has a clear product plan and recommended answers to the main build ques
 
 ## What is covered and what remains
 
-| Gap | Recommended answer | Still needed |
-| --- | --- | --- |
-| G01 · Connections | Start with direct Jira, Confluence, and repository access. | Prove real reads, AI, saving, and reload on the selected site. |
-| G02 · Repository permissions | Tie read-only access to each user and the selected repository. | Prove sign-in, renewed access, disconnect, and denied access. |
-| G03 · AI data sharing | Use one approved route; keep graph/MCP out of the first external route. | Confirm permitted data, provider settings, prices, and budget. |
-| G04 · Shared criteria privacy | Separate private context from information approved for sharing. Leave the optional Jira-property copy off. | Agree publication policy and test for leaks. |
-| G05 · Safe saving | Protect competing edits and make repeated submissions return the same result. | Prove races, old retries, and deletion cannot corrupt approvals. |
-| G06 · Spending | Reserve cost before calls and do not automatically retry uncertain paid outcomes. | Set limits and a budget owner; test concurrent calls and refunds. |
-| G07 · Missing information | Show gaps and partial guidance; never invent context. | Build and test the missing-source states. |
-| G08 · Outdated guidance | Check access and source changes separately. | Test changed code/docs, failed checks, and revoked access. |
-| G09 · Quality | Use fixed examples, human evidence review, and the ten-ticket pilot. | Run the comparison and pilot; measure cost and response time. |
-| G10 · Ownership | Each issue has one responsible owner and can have collaborators. | Fill TBD roles, estimate work, and agree dates. |
-| G11 · Deletion | Hide expired work and stop late jobs restoring deleted content. | Confirm retention and prove cleanup behavior. |
-| G12 · Accessibility | Review the full journey with keyboard and screen reader. | Complete the usability and accessibility checks. |
+**Decided** means the product rule or team practice is agreed and still needs the follow-up shown. **Open** means a design or planning decision remains. Owners record decisions and test evidence in the relevant GitHub issue.
 
-These are recommended approaches, not claims that the gaps have passed testing. Owners keep their research and decisions with the relevant issues.
+| Gap | Status | Current direction | Still needed |
+| --- | --- | --- | --- |
+| G01 · Connections | Open | Start with direct Jira, Confluence, and repository access. | Confirm pilot sources and prove real reads, AI, saving, and reload. |
+| G02 · Repository permissions | Open | Tie read-only access to each user and the selected repository. | Confirm the sign-in approach and prove renewal, disconnect, and denied access. |
+| G03 · AI data sharing | Open | Start with one approved route. Keep graph/MCP out of the first external route. | Confirm permitted data, provider settings, prices, and budget. |
+| G04 · Shared criteria privacy | Decided | Keep answers and drafts private. Let ticket editors approve criteria for ticket viewers. | Test preview, approval permissions, and visibility. |
+| G05 · Safe saving | Open | The PRD requires conflict protection and safe retries. | The storage assignee researches the design and tests concurrent saves, old retries, and deletion. |
+| G06 · Spending | Open | Reserve cost before calls and avoid automatic retries with uncertain paid outcomes. | Set limits and a budget owner, then test concurrent calls and refunds. |
+| G07 · Missing information | Decided | Show gaps and partial guidance. Use available evidence for factual claims. | Build and test missing-source states. |
+| G08 · Outdated guidance | Decided | Flag changed criteria or sources, show unknown freshness when needed, and recheck access. | Test changed code or documents, failed checks, and revoked access. |
+| G09 · Quality | Open | The PRD requires a ten-ticket pilot. Fixed model examples and human evidence review are proposed for evaluation. | Confirm the comparison cases and run the comparison and pilot. Measure cost and response time. |
+| G10 · Ownership | Decided | Each issue has one accountable owner and can have collaborators. | Fill TBD roles, estimate work, and agree dates. |
+| G11 · Deletion | Open | Hide expired work and stop late jobs from restoring deleted content. | Confirm retention and prove cleanup behavior. |
+| G12 · Accessibility | Decided | The full journey must work with keyboard and screen reader. | Complete the usability and accessibility checks. |
 
 ## Important lessons from the review
 
-- SQL is not the only storage option. Forge's conditional saving can be a simpler starting point.
+- The storage assignee will compare viable options against the approval and recovery requirements.
 - A connected GitHub account does not prove the app can read files for the current user.
 - A timeout does not prove an AI call was free or stopped.
 - Approving text does not automatically make private facts safe to share.
@@ -40,10 +40,8 @@ The [build recommendations](implementation-decisions.md) explain these choices a
 
 ## What happens next
 
-Alan and Michael prove the connections and saving; Kandis checks AI behavior and compares models. Together they agree how the parts fit. Brie coordinates priorities, shared decisions, and unassigned roles. Owners then build and test both features.
+Backend proves the connections, the storage assignee researches persistence, and the AI Lead checks AI behavior and compares models. Frontend helps agree the contracts. The Product Lead sets priorities, and the Scrum Master coordinates shared decisions and unassigned roles. Owners then build and test both features.
 
 The team must supply actual source selections, access, data-sharing rules, spending limits, retention choices, role coverage, estimates, and release date. Confirm each before the work that depends on it.
 
 **Don't forget you can use Shashi's app to check models and prices.** Its link/access was not supplied, and no winning model was selected in this review.
-
-No Jira issues, deployments, external messages, or paid AI calls were created by this research.

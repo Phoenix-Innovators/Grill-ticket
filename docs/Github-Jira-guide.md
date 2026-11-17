@@ -6,20 +6,25 @@ Use this guide for everyday work in:
 - **Jira project:** `PI`
 - **Workflow contact:** Brie
 
-Create the work once, let automation create the matching record, and include the Jira key in your branch, commits, and pull request.
+Plan and track Grill Lab work in GitHub. Automation creates the matching Jira record and adds its key to the GitHub issue. Use that key for branch, commit, and pull request naming as shown below.
+
+## Everyday workflow
+
+1. Find or create the issue in GitHub. Confirm its owner, outcome, dependencies, and completion checks.
+2. For code work, use the Jira key supplied by automation in your branch name, commits, and pull request title. Reference the GitHub issue in the PR description.
+3. Complete the agreed checks, record evidence in the GitHub issue, and finish any required review or merge.
+4. Close the GitHub issue if it did not close automatically. Contact Brie if the linked record does not update.
 
 ## Quick reference
 
 | I want to… | Do this |
 | --- | --- |
-| Start in GitHub | Create an issue and wait for the linked Jira task. |
-| Start in Jira | Create a `PI` task with the `github` label already included. |
 | Find the Jira key | Check the GitHub issue's automation comment or its `Created from Jira:` line. |
-| Name a branch | Use `feature/PI-12-login-redirect`. |
+| Name a branch | Use `PI-12-fix/login-redirect` (`PI-<number>-<type>/<short-description>`). |
 | Write a commit | Use `PI-12 Fix login redirect`. |
 | Title a pull request | Use `PI-12 Fix login redirect`. |
 | Reference the GitHub issue in a PR | Add `Related GitHub issue: #42` to the PR description. |
-| Finish work | Meet the team's completion criteria, then close the GitHub issue or move the Jira task to Done. |
+| Finish work | Meet the team's completion checks, then close the GitHub issue. |
 | Fix a missing link | Contact Brie before creating another record. |
 
 ## How our team's automation works
@@ -37,16 +42,6 @@ These rules describe our team's configured automation, not behavior guaranteed b
 
 GitHub Projects column changes are not covered by these sync rules.
 
-## Everyday workflow
-
-1. Create or choose the work in GitHub or Jira. Do not create the same work separately in both.
-2. Wait for the matching record and find the Jira key.
-3. Add the uppercase Jira key to your branch name, commit messages, and pull request title.
-4. Reference the GitHub issue in the PR description, as explained below.
-5. Complete the issue's agreed checks, required review and testing, and any required merge. Non-code tasks follow their agreed completion checks.
-6. Close the GitHub issue or move the Jira task to **Done**, or confirm it was closed automatically.
-7. Check that the linked record updated. Contact Brie if it did not.
-
 ## Finding and using the Jira key
 
 The key may appear in a GitHub issue comment:
@@ -63,7 +58,7 @@ Use the key exactly as shown, including uppercase letters.
 | --- | --- |
 | Jira task | `PI-12` |
 | GitHub issue | `#42` |
-| Branch | `feature/PI-12-login-redirect` |
+| Branch | `PI-12-fix/login-redirect` |
 | Commit message | `PI-12 Fix login redirect` |
 | Pull request title | `PI-12 Fix login redirect` |
 
@@ -89,9 +84,9 @@ GitHub interprets closing keywords when the PR targets the repository's default 
 
 References: [GitHub PR and issue linking](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue), [linking development activity to Jira](https://support.atlassian.com/jira-cloud-administration/docs/use-the-github-for-jira-app/).
 
-## Labels and duplicate prevention
+## Reference for work that starts in Jira
 
-- When starting in Jira, include `github` when creating the task. Adding it later is not the documented team workflow.
+- If work starts in Jira, create the `PI` task with the `github` label already included. Continue tracking the work in the linked GitHub issue once automation creates it.
 - Leave the automatically added Jira label `gh-<number>` intact. It connects the task to its GitHub issue.
 - If the matching record or Jira key is missing, contact Brie before creating a replacement.
 - Close work only after the team's completion criteria are met, because closure updates the linked record.
@@ -100,7 +95,7 @@ References: [GitHub PR and issue linking](https://docs.github.com/en/issues/trac
 
 1. A developer opens GitHub issue `#42`: “Fix login redirect.”
 2. Automation creates Jira task `PI-12` and adds its key and link to the GitHub issue.
-3. The developer creates branch `feature/PI-12-login-redirect`.
+3. The developer creates branch `PI-12-fix/login-redirect`.
 4. They commit with `PI-12 Fix login redirect`.
 5. They open a pull request titled `PI-12 Fix login redirect` and add `Related GitHub issue: #42` to its description.
 6. After the required review, testing, merge, and other completion checks, they close issue `#42`. If a closing keyword was used and GitHub already closed it, they confirm that result instead.
