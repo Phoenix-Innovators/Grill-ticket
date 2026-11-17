@@ -10,7 +10,7 @@ Start with direct Jira, Confluence, and GitHub connections on the selected site 
 
 Use Jira as the main Forge app connection and connect Confluence on the same site. A Jira–GitHub connection does not prove that Grill Lab can read source files.
 
-For GitHub, prefer an app limited to the selected repository, with read-only file permission and access tied to each user. Michael must prove sign-in, renewed access, disconnect, and denied access. Forge's general GitHub example does not prove this exact setup.
+For GitHub, prefer an app limited to the selected repository, with read-only file permission and access tied to each user. The Backend owner verifies sign-in, renewed access, disconnect, and denied access. Forge's general GitHub example does not prove this exact setup.
 
 Keep Teamwork Graph and Rovo MCP out of the first external-AI route. They can be reconsidered after access and data-sharing rules are proved.
 
@@ -20,9 +20,9 @@ References: [Forge app connections](https://developer.atlassian.com/platform/for
 
 Private documents, code, related tickets, and interview history must not automatically flow into shared criteria. Generate the shared draft from information suitable for the ticket's audience and answers the author deliberately chooses to share. Restricted comments need separate care, even when the ticket is visible.
 
-Show the author exactly what will be shared before approval. A checkbox or AI filter cannot guarantee that copied text contains no private facts; the team still needs a publication policy.
+Show ticket editors exactly what will be shared before explicit approval. Keep private answers and drafts visible only to their owner. The team still needs to agree which private source details are safe to share.
 
-Leave the optional Jira-property copy off at first. Save approved criteria in the app. Recheck access before showing any private saved work, including questions and source titles.
+Make approved criteria available in the panel to users who can view the ticket. Recheck access before showing private saved work, including questions and source titles.
 
 References: [Jira comment access](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-comments/), [Jira property privacy](https://developer.atlassian.com/cloud/jira/platform/jira-entity-properties/).
 
@@ -38,7 +38,7 @@ If ticket access is denied or cannot be confirmed, hide saved content and offer 
 
 When two people save against the same version, accept one and warn the other. Keep the second person's edits so they can compare and retry. Repeating a successful submission must return its original result, even after a newer approval exists.
 
-Recommended storage: Forge Custom Entity Store, which can check conditions and save related records together. Alan and Michael may choose another design that passes the same tests.
+The storage assignee researches options, such as Forge SQL and Forge Custom Entity Store, and records the recommendation and trade-offs in the owning GitHub issue. Compare how each option supports private drafts, approval history, conflicting edits, safe retries, and deletion.
 
 Create operation IDs on the server. An old or missing submitted ID must not start a new save. Keep previous approvals. Mark deleted work so old requests cannot recreate it.
 
