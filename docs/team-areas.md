@@ -15,7 +15,7 @@ Use with the [PRD](prd.md) and [MVP plan](mvp.md). People can contribute to more
 | UX/UI | Shannan (@funbunch) | Review usability and accessibility. | Not Started |
 | Documentation | Alex (@iamspeedyalex) | Keep team docs and handoff notes useful. | Not Started |
 | Scrum Master | Shashi (@Shashilo) | Coordinate planning, dependencies, and blockers. | Not Started |
-| Security | TBD | Review access, privacy, and data handling. | Not Started |
+| Security | Dan (@rubenaguilardev) | Review access, privacy, and data handling. | Not Started |
 | Database Management | TBD | Design reliable saving, version history, and cleanup. | Not Started |
 
 TBD means no owner has been assigned. Planning documents alone do not change a status to Started or Complete.

@@ -1,80 +1,89 @@
 # Grill Lab product requirements
 
-Version 1 · November 4, 2026 · Team review
+November 18, 2026
 
-## What we are building
+## What we’re building
 
-Grill Lab is a Jira app for the Gridiron engineering team on one Atlassian site. It helps ticket authors explain what they need and helps developers understand how to build it.
+Grill Lab is one Jira assistant that helps people work through a ticket from beginning to end. It helps users understand the work, find missing details, make better decisions, and move toward completion without searching through endless documentation.
 
-Vague tickets cause rework. Useful information is often spread across Jira, Confluence, and code. Grill Lab brings relevant information together and makes missing decisions visible.
+Grill Lab should assess the user’s plan and raise useful concerns, explain its reasoning, suggest alternatives, and leave the user in control.
 
-## The two features
+Grill Lab has two connected functions:
 
-**Grill My Ticket** reviews the available context, asks one question at a time, and drafts acceptance criteria: clear checks that show when the work is done. A user with ticket edit access can approve criteria they can review. Only the approved criteria become the shared requirement.
+- Grill My Ticket helps the user clarify what needs to be done. It reviews relevant information, asks purposeful questions, spots gaps or related work, and helps draft clear acceptance criteria (the checks used to determine whether a ticket is done).
+- Context Lab helps the user figure out how to do the work. It offers practical guidance, explanations, troubleshooting, examples, and proposed code, with links to the information it relied on.
 
-**Context Lab** uses the approved criteria and available sources to suggest build steps, explain its reasoning, and provide verification checks. Both features are required for the MVP.
+Users can open either function whenever they need it, in any order. Both share relevant ticket context and saved decisions, subject to access controls.
 
-## The user journey
+## How a user works with Grill Lab
 
-1. Open Grill Lab inside a Jira ticket.
-2. See which sources were reviewed and which are missing.
-3. Answer up to five questions, skip up to three, or choose Draft now. Skipped questions become open decisions for the ticket's assignee.
-4. Review and edit the draft. If you can edit the ticket, explicitly approve the version to share.
-5. Open Context Lab for source-backed build guidance.
-6. Return later to resume work and check whether the guidance is still current.
+1. Open a Jira ticket and launch Grill Lab from its issue panel.
+2. Choose Grill My Ticket or Context Lab. A two-tab panel is the proposed layout. Frontend and UX/UI will refine it.
+3. Click to start a review or request help. Grill Lab reads the relevant sources the user is authorized to access.
+4. Review the AI's questions, concerns, suggestions, or next steps. The user can ask follow-up questions, change direction, skip, or request more detail.
+5. When useful, generate or revise acceptance criteria. An authorized user reviews and approves the exact wording before it becomes shared.
+6. Return later and resume work without having to restart. The user can request a fresh review if things have changed.
+
+Context Lab is available even when acceptance criteria are unfinished or not yet approved. It should explain how incomplete information affects confidence in its guidance.
+
+## How the AI should behave
+
+- Challenge respectfully. Point out a likely problem, duplicate, dependency, or stronger alternative. Explain why it matters and let the user decide.
+- Ask only useful questions. Ask one at a time when clarification helps. Do not force a five-question limit or ask questions just to continue a script.
+- Focus on clarity and progress. Consider the ticket's goal, intended behavior, dependencies, constraints, and definition of done. Show what is clear and what still needs attention without requiring a perfect score or exhaustive checklist.
+- Keep conversations flexible. Allow quick reviews or deeper discussion. Users can skip, revisit, pause, resume, and draft criteria at any point. Skipping does not count as answering.
+- Know when to stop asking. Offer a useful next step or draft when sufficient information exists, and let the user end the review at any time.
+- Separate facts from ideas. Cite real, permitted sources for claims about existing code, documentation, and related tickets. Make assumptions, incomplete coverage, and recommendations visible.
+- Make guidance easy to use. Prefer concise steps and relevant examples over lengthy documentation dumps. Frontend and UX/UI will decide the final result presentation.
+- Keep the user in control. AI cannot approve shared requirements or make changes to shared work without appropriate authorization and explicit approval.
+
+## What the first release includes
+
+- A Grill Lab panel within a Jira issue, with both functions accessible on demand and able to share authorized context.
+- User-triggered AI reviews. Opening the panel can display saved work and check availability, but does not automatically launch a new AI analysis.
+- Review of the current ticket, relevant Jira work, agreed Confluence content, and selected official Forge guidance. Use relevant development information from tools already connected to Jira where permitted. Support source-file review when authorized access is proven.
+- Flexible ticket clarification, editable acceptance criteria, explicit approval, and readable approval history.
+- Context Lab explanations, implementation steps, troubleshooting help, and proposed code or examples, even if criteria have not been approved.
+- Saved progress, clear errors, and visible warnings when source access or freshness changes.
+
+Work with existing connections first. Grill Lab should fit the tools the team already uses, such as GitHub, GitLab, or Bitbucket. Reuse existing access where it is sufficient. Jira and Confluence permissions remain in force, and source-file access must also respect the repository provider’s permissions. A Jira development link may expose branches, commits, or pull requests. Verify access to the underlying code separately. If source-file access is unavailable, explain the limitation and require explicit authorization for any broader access. The first release must prove a usable, authorized way to access development context. Provider-specific coverage remains open for engineering research.
 
 ## Requirements
 
-| ID | The app must… |
+| ID | Grill Lab must… |
 | --- | --- |
-| FR01 | Read only information the current user can access and show source coverage. |
-| FR02 | Review relevant context before asking questions; identify gaps and conflicting information. |
-| FR03 | Ask one question at a time, with a five-question maximum for AI-generated questions, including follow-ups. Skips have a separate three-skip limit and do not use up a question. Retries must not count twice. Allow an early draft; Draft now counts toward neither limit. |
-| FR04 | Let the author add, edit, and remove testable criteria. Keep unknowns and assumptions separate. Each skipped question appears as an open decision, labeled for the ticket's assignee (the reporter if unassigned) to decide. |
-| FR05 | Save the exact approved criteria as a new version. Reject empty criteria and warn about conflicting edits. Repeated submissions must not create duplicate approvals. Warn, but do not block, approval while open decisions remain. Anyone who can edit the ticket may explicitly approve criteria they can review. Editing approved criteria and approving again creates a new version, shown with a comparison to the previous one; older versions stay readable. |
-| FR06 | Link build guidance to approved criteria, supporting sources, and verification checks. Clearly label proposed actions and uncertainty. |
-| FR07 | Flag guidance when its criteria or sources change. Show when freshness cannot be checked. A new approval marks existing guidance outdated; it is regenerated only when the user chooses. |
-| FR08 | Save progress across reloads and provide clear recovery after errors. Preserve the last good approval. |
-| FR09 | Keep private work private. Interview answers and unapproved drafts are visible only to the person who entered them. Approved criteria are shared with anyone who can view the ticket. Recheck access before showing saved content, including questions, drafts, guides, and source details. |
-| FR10 | Keep AI choices, spending, question limits, validation, and saving rules under backend control. AI output cannot approve itself. |
+| FR01 | Reuse existing Jira, Confluence, and connected development context where authorized. Respect the current user’s permissions and any required app or provider authorization. Show which sources were checked, unavailable, or incomplete. Avoid unnecessary reconnection. |
+| FR02 | Use relevant ticket, documentation, and code information to identify meaningful gaps, conflicts, and related work. Distinguish verified facts from suggestions. |
+| FR03 | Support flexible, user-triggered conversation without a fixed five-question limit. Allow skipping, revisiting, pausing, resuming, and drafting at any point. Keep individual AI operations within safe usage limits. |
+| FR04 | Let users add, edit, and remove clear, testable acceptance criteria, while keeping assumptions and unresolved decisions separate. |
+| FR05 | Require explicit permission-based approval before criteria are shared. Preserve exact approved versions, prevent duplicate saves, and warn about conflicting edits. |
+| FR06 | Provide useful Context Lab guidance with or without approved criteria. Offer practical next steps and relevant source references, and label uncertainty. |
+| FR07 | Show when saved guidance may be outdated because related requirements or sources changed, or when freshness cannot be verified. Let users request an updated review. |
+| FR08 | Save and restore relevant progress across visits, handle failed operations clearly, and protect the last good approval. The technical team selects the storage approach. |
+| FR09 | Keep unapproved drafts, conversations, and restricted source content private. Share approved criteria only with users allowed to view the ticket. Recheck access before showing saved work. |
+| FR10 | Control AI access, output validation, costs, and sensitive actions on the backend. AI cannot approve its own output or perform unapproved changes. |
 
-Facts about existing code or documents need supporting sources. A suggestion must not invent a file, framework, or current behavior. When evidence is missing, show a partial guide and explain what is needed. Partial guidance does not count as a complete release test.
+## What comes later
 
-## What is included
+Automatic monitoring of ticket creation, updates, closures, pull requests, or merges belongs in the backlog. In the first release, users request reviews from the panel.
 
-One Jira issue panel with both features. Sources include the current ticket, relevant Jira work, agreed Confluence spaces, selected official Forge guidance, and one selected repository.
-
-Approved criteria can be reopened and copied from the panel. The storage assignee researches how to persist and retrieve them. Existing Jira titles and descriptions stay intact.
-
-Code editing or execution, automatic description changes, automatic issue creation, pull-request checks, and crawling every connected app are outside the MVP.
-
-## Privacy and saved work
-
-Users review exactly what will be shared before approval. Private source content must not automatically become shared criteria. The team must agree which answers and information may be published.
-
-Recheck access when saved content is opened. Hide dependent private content if access is denied or cannot be confirmed. Keep previous approval versions when a new version is approved; explicit deletion follows the agreed retention policy.
-
-Checking a guide step records that user's own progress. It does not certify that code passed a test.
+Deferred work also includes building additional direct integrations for every repository host, automatic Jira description changes, autonomous issue creation, exhaustive scanning of connected services, and direct AI editing or execution of repository code. Hands-off implementation remains part of the broader vision.
 
 ## What success looks like
 
-- Ten representative tickets complete both features using real sources.
-- At least four of five pilot reviewers can identify a useful next step.
-- Factual claims have supporting evidence; proposals and uncertainty are clear.
-- Release tests find no unresolved access leaks, approval bypasses, duplicate saves, or question-limit failures.
-- The complete journey works with keyboard and screen reader, including errors and recovery.
-- Measured AI cost and response time fit the team's agreed limits.
+- A new teammate can explain the product and open either function without a technical walkthrough.
+- Both functions are useful individually and work together without forcing an order.
+- Users can recognize clear requirements, remaining questions, and worthwhile next steps without being forced through a lengthy interview.
+- Acceptance criteria are editable, explicitly approved, saved without duplication, and recoverable with their versions.
+- Claims about existing work have real supporting sources. Gaps and uncertainty are visible.
+- Representative tests cover each function, their combined use, accessibility, permissions, failure/recovery, and measured AI responsiveness and spending.
 
-These are release targets, not results already achieved.
+The MVP plan and release checks track the pilot scenarios and thresholds for these release goals.
 
-## Ownership and open decisions
+## Ownership and open questions
 
-Brie owns product scope and acceptance. Shashi coordinates delivery. Each area owner researches options, chooses an approach, estimates work, and creates concise issues. Decisions affecting other roles, cost, permissions, or product behavior are reviewed together.
+Brie is Product Lead and owns product scope, priorities, and acceptance. The [team roster](team-areas.md) identifies current functional owners, including unfilled areas. Technical owners research and recommend implementation approaches, record decisions, and estimate their work.
 
-The team still needs to confirm how un-skipping a question works (research pending), pilot sources, permitted AI processing, model choice, spending limits and budget owner, retention, unassigned roles, and release date. OpenRouter is the preferred first AI connection; native Forge AI remains an alternative. Models stay configurable and must be evaluated before selection.
+The [gap review](gap-review.md) tracks unresolved decisions, including the conversation name, panel and result layout, access through existing connections and repository authorization, storage ownership and approach, model configuration, safe usage limits, retention, and direct code-editing scope. Team poll results and agreed design choices can be incorporated in later revisions.
 
-See the [MVP plan](mvp.md), [team responsibilities](team-areas.md), [build recommendations](implementation-decisions.md), and [release checks](acceptance-and-evidence.md).
-
-Keep this PRD current when scope or behavior changes. Link issues to requirement IDs and update the related checks before closing work.
-
-Revision 1 · November 4, 2026: Simplified for team review; both features and FR01–FR10 remain in scope.
+The [MVP plan](mvp.md) defines delivery work, while [implementation decisions](implementation-decisions.md) and [release checks](acceptance-and-evidence.md) contain technical research and evidence. The PRD governs product requirements.

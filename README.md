@@ -24,7 +24,7 @@ Use these codes to find the requirement, work package, decision, or check refere
 | `FR01–FR10` | Functional requirements | [PRD requirements](docs/prd.md#requirements) |
 | `B01–B10` | MVP work packages | [MVP work packages](docs/mvp.md#work-packages) |
 | `D01–D07` | Implementation recommendations | [Build recommendations](docs/implementation-decisions.md) |
-| `G01–G12` | Gaps and open decisions | [Gap review](docs/gap-review.md#what-is-covered-and-what-remains) |
+| `G01–G20` | Gaps and open decisions | [Gap review](docs/gap-review.md#what-is-covered-and-what-remains) |
 | `J01–J10` | User journey checks | [Workflow checks](docs/acceptance-and-evidence.md#ten-workflow-checks) |
 | `C01–C07` | Additional release checks | [Extra checks](docs/acceptance-and-evidence.md#seven-extra-checks) |
 
